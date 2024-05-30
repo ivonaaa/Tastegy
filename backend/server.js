@@ -1,7 +1,25 @@
+require('dotenv').config()
+
 const express = require('express')
+const mongoose = require('mongoose')
+const routes = require('./routes/recipes')
 
 const app = express()
 
-app.listen(4000, () => {
-    console.log('listening on port 4000')
+app.use(express.json())
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
 })
+
+app.use('/api/recipes', routes)
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log('connected to db & listening on port', process.env.PORT)
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })

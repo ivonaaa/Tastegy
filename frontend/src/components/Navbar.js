@@ -9,6 +9,9 @@ const Navbar = () => {
                         Tastegy
                     </h1>
                 </Link>
+                <Link to="/AddRecipe">
+                    Add Recipe
+                </Link>
             </div>
         </header>
     )

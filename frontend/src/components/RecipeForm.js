@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 const RecipeForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     const handleAddIngredient = () => {
         setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
@@ -33,9 +35,9 @@ const RecipeForm = () => {
             setError(json.error)
         }
         if(response.ok){
-            setTitle('')
             setError(null)
             console.log('New recipe added!', json)
+            navigate('/');
         }
     };
 

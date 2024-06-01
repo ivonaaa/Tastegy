@@ -67,10 +67,10 @@ header a {
   color: #333;
 }
 
-label, input {
+label, input, textarea {
   display: block;
 }
-input {
+input, textarea {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -87,6 +87,7 @@ form button {
   font-family: "Poppins";
   border-radius: 4px;
   cursor: pointer;
+  margin: 10px;
 }
 div.error {
   padding: 10px;

@@ -18,12 +18,12 @@ const Navbar = () => {
                         Tastegy
                     </h1>
                 </Link>
-                <Link to="/addRecipe">
-                    Add Recipe
-                </Link>
                 <nav>
                     { user && (
                         <div>
+                            <Link to="/addRecipe">
+                                Add Recipe
+                            </Link>
                             <span>{ user.email }</span>
                             <button onClick={handleClick}>Log out</button>
                         </div>

@@ -2,10 +2,7 @@ const express = require('express');
 
 const { 
     getRecipies,
-    getRecipe,
-    createRecipe,
-    deleteRecipe,
-    updateRecipe
+    getRecipe
 } = require('../controllers/recipeController')
 
 const router = express.Router();
@@ -15,14 +12,5 @@ router.get('/', getRecipies);
 
 // GET a single recipe
 router.get('/:id', getRecipe);
-
-// POST a new recipe
-router.post('/', createRecipe);
-
-// DELETE a recipe
-router.delete('/:id', deleteRecipe);
-
-// UPDATE a recipe
-router.patch('/:id', updateRecipe);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const RecipeForm = () => {
     const [title, setTitle] = useState('');
@@ -7,6 +8,8 @@ const RecipeForm = () => {
     const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
     const [error, setError] = useState(null);
     const navigate = useNavigate()
+
+    const { user } = useAuthContext()
 
     const handleAddIngredient = () => {
         setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
@@ -22,12 +25,17 @@ const RecipeForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if(!user){
+            setError('You must be logged in')
+            return
+        }
         const recipe = { title, description, ingredients };
         const response = await fetch('/api/recipes', {
             method: 'POST',
             body: JSON.stringify(recipe),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json

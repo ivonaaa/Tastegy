@@ -1,7 +1,5 @@
 const express = require('express');
 const {
-    getRecipies,
-    getRecipe,
     createRecipe,
     deleteRecipe,
     updateRecipe

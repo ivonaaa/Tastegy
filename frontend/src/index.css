@@ -105,6 +105,10 @@ nav {
 nav a {
   margin-left: 10px;
 }
+nav span {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 nav button {
   background: #fff;
   color: var(--primary);
@@ -114,6 +118,7 @@ nav button {
   font-family: "Poppins";
   cursor: pointer;
   font-size: 1em;
+  margin-left: 10px;
 }
 
 /* auth forms */

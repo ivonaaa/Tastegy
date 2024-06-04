@@ -3,7 +3,7 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #5B79A2;
   --error: #e7195a;
 }
 body {
@@ -13,7 +13,7 @@ body {
   font-family: "Poppins";
 }
 header {
-  background: #fff;
+  color: #fff;
 }
 header .container {
   max-width: 1400px;
@@ -24,7 +24,7 @@ header .container {
   justify-content: space-between;
 }
 header a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
 .pages{
@@ -38,10 +38,15 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+.home .recipes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
 .recipe-details {
   background: #fff;
   border-radius: 4px;
-  margin: 20px auto;
+  margin: 0px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
@@ -65,6 +70,10 @@ header a {
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+.leftBar a {
+  color: #fff;
+  text-decoration: none;
 }
 
 label, input, textarea {

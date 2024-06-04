@@ -21,13 +21,9 @@ const Navbar = () => {
                 <nav>
                     { user && (
                         <div>
-                            <Link to="/addRecipe">
-                                Add Recipe
-                            </Link>
                             <Link to="/profile">
-                                My profile
+                                <span>{ user.email }</span>
                             </Link>
-                            <span>{ user.email }</span>
                             <button onClick={handleClick}>Log out</button>
                         </div>
                     )}

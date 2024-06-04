@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import RecipeDetails from '../components/RecipeDetails'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Home = () => {
     const [recipes, setRecipes] = useState(null);
+    const { user } = useAuthContext()
     
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -25,6 +28,18 @@ const Home = () => {
                         <RecipeDetails key={recipe._id} recipe={recipe} />
                     </p>
                 ))}
+            </div>
+            <div className='leftBar'>
+                { user && (
+                    <div>
+                        <Link to="/addRecipe">
+                            <p>Add Recipe</p>
+                        </Link>
+                        <Link to="/profile">
+                            <p>My profile</p>
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );

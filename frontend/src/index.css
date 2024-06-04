@@ -107,6 +107,25 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+.recipeForm {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 100px;
+}
+.recipeForm label {
+  margin: 0px auto;
+  padding: 0px;
+}
+.addbutton {
+  margin: 10px 0px 10px 10px;
+  cursor: pointer;
+}
+.ingredients {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
 /* navbar */
 nav {
   display: flex;

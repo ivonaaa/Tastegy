@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import RecipeForm from './components/RecipeForm'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import RecipeDetailsPage from './pages/RecipeDetailsPage'
 
 function App() {
   const { user } = useAuthContext()
@@ -31,6 +32,10 @@ function App() {
             <Route 
               path='/signup'
               element = { !user ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route 
+              path='/recipe/:id' 
+              element={<RecipeDetailsPage />} 
             />
           </Routes>
         </div>

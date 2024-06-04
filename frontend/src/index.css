@@ -76,6 +76,9 @@ header a {
   color: #fff;
   text-decoration: none;
 }
+.home .profile {
+  
+}
 
 label, input, textarea {
   display: block;
@@ -174,6 +177,17 @@ form.signup, form.login {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+.addRecipe {
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: center;
+}
+.addRecipe span {
+  color: #fff;
+}
+
 
 .recipe-details {
   border: 1px solid #ccc;

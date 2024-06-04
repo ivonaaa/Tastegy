@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext';
 import RecipeDetails from '../components/RecipeDetails';
 
@@ -40,7 +41,14 @@ const Profile = () => {
                 </div>
             </div>
             <div className='userRecipeInfo'>
-                neke info
+                <div className='addRecipe'>
+                    <Link to="/addRecipe">
+                        <span className='material-symbols-outlined addbutton'>
+                            add_circle
+                        </span>
+                    </Link>
+                    <p>Add new recipe</p>
+                </div>
             </div>
         </div>
     );

@@ -27,12 +27,20 @@ const Profile = () => {
 
     return (
         <div className="profile">
-            <h2>User Profile</h2>
-            <p>Email: {user?.email}</p>
-            <div className="recipes-grid">
-                {recipes && recipes.map((recipe) => (
-                    <RecipeDetails key={recipe._id} recipe={recipe} />
-                ))}
+            <div className='userDetails'>
+                <h2>My Profile</h2>
+                <p>Email: {user?.email}</p>
+                <h3>My Recipes: </h3>
+                <div className="recipes-grid">
+                    {recipes && recipes.map((recipe) => (
+                        <p key={recipe._id}>
+                            <RecipeDetails key={recipe._id} recipe={recipe} />
+                        </p>
+                    ))}
+                </div>
+            </div>
+            <div className='userRecipeInfo'>
+                neke info
             </div>
         </div>
     );

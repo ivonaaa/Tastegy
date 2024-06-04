@@ -19,12 +19,12 @@ const RecipeDetailsPage = () => {
     }, [id]);
 
     return (
-        <div className="recipe-details">
+        <div className="recipe-details-page">
             {recipe ? (
                 <div>
-                    <h2>{recipe.title}</h2>
+                    <h1>{recipe.title}</h1>
                     <p>{recipe.description}</p>
-                    <h3>Ingredients</h3>
+                    <h2>Ingredients</h2>
                     <ul>
                         {recipe.ingredients.map((ingredient) => (
                             <li key={ingredient.name}>

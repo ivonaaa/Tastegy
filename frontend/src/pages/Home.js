@@ -22,13 +22,6 @@ const Home = () => {
     
     return (
         <div className="home">
-            <div className="recipes">
-                {recipes && recipes.map((recipe) => (
-                    <p key={recipe._id}>
-                        <RecipeDetails key={recipe._id} recipe={recipe} />
-                    </p>
-                ))}
-            </div>
             <div className='leftBar'>
                 { user && (
                     <div>
@@ -40,6 +33,28 @@ const Home = () => {
                         </Link>
                     </div>
                 )}
+                { !user && (
+                    <div>
+                        <p>
+                            By signing up or logging in you get great benefits. <br></br>
+                            See your profile, add delicious recipes, comment 
+                            and review recipes by being a member of Tastegy. 
+                        </p>
+                        <div className='loginButton'>
+                            <Link to="/login">
+                                <p>Log in</p>
+                            </Link>
+                            <p> for free now!</p>
+                        </div>
+                    </div>
+                )}
+            </div>
+            <div className="recipes">
+                {recipes && recipes.map((recipe) => (
+                    <p key={recipe._id}>
+                        <RecipeDetails key={recipe._id} recipe={recipe} />
+                    </p>
+                ))}
             </div>
         </div>
     );

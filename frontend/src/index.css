@@ -8,6 +8,7 @@
 }
 body {
   background: url('../public/images/background.jpg') no-repeat center center fixed;
+  color: #fff;
   background-size: cover;
   margin: 0;
   font-family: "Poppins";
@@ -35,7 +36,7 @@ header a {
 
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 3fr;
   gap: 100px;
 }
 .home .recipes {
@@ -140,7 +141,9 @@ form.signup, form.login {
 }
 
 .profile {
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
 }
 
 .profile h2 {
@@ -158,4 +161,9 @@ form.signup, form.login {
   padding: 10px;
   border-radius: 5px;
   background-color: #f9f9f9;
+}
+.loginButton {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }

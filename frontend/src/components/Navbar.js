@@ -24,6 +24,9 @@ const Navbar = () => {
                             <Link to="/addRecipe">
                                 Add Recipe
                             </Link>
+                            <Link to="/profile">
+                                My profile
+                            </Link>
                             <span>{ user.email }</span>
                             <button onClick={handleClick}>Log out</button>
                         </div>

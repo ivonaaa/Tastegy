@@ -7,6 +7,7 @@ import RecipeForm from './components/RecipeForm'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import RecipeDetailsPage from './pages/RecipeDetailsPage'
+import Profile from './pages/Profile';
 
 function App() {
   const { user } = useAuthContext()
@@ -37,6 +38,10 @@ function App() {
               path='/recipe/:id' 
               element={<RecipeDetailsPage />} 
             />
+            <Route 
+              path='/profile' 
+              element={user ? <Profile /> : <Navigate to="/login" />} 
+            /> 
           </Routes>
         </div>
       </BrowserRouter>

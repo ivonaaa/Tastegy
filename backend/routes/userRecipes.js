@@ -1,5 +1,6 @@
 const express = require('express');
 const {
+    getUsersRecipes,
     createRecipe,
     deleteRecipe,
     updateRecipe
@@ -9,6 +10,8 @@ const requireAuth = require('../middleware/requireAuth');
 const router = express.Router();
 
 router.use(requireAuth)
+
+router.get('/', getUsersRecipes)
 
 // POST a new recipe (protected)
 router.post('/', createRecipe);

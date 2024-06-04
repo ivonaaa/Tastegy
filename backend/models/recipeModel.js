@@ -26,7 +26,11 @@ const recipeSchema = new Schema({
         type: String,
         required: true
     },
-    ingredients: [ingredientSchema]
+    ingredients: [ingredientSchema],
+    user_id: {
+        type: String,
+        required: true
+    }
 }, { timestamps: true });
 
 const Recipe = mongoose.model('Recipe', recipeSchema);

@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 
 app.use('/api/recipes', recipesRoutes)
 app.use('/api/user', userRoutes)
-app.use('/api/recipes', protectedRoutes)
+app.use('/api/userRecipes', protectedRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {

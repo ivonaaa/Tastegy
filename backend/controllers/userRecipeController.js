@@ -1,5 +1,13 @@
 const Recipe = require('../models/recipeModel');
 
+const getUsersRecipes = async (req, res) => {
+    const user_id = req.user._id
+
+    const recipes = await Recipe.find({ user_id }).sort({createdAt: -1})
+
+    res.status(200).json(recipes)
+}
+
 // POST a new recipe
 const createRecipe = async (req, res) => {
     const { title, description, ingredients } = req.body;
@@ -10,7 +18,8 @@ const createRecipe = async (req, res) => {
     }
 
     try {
-        const recipe = await Recipe.create({ title, description, ingredients });
+        const user_id = req.user._id
+        const recipe = await Recipe.create({ title, description, ingredients, user_id });
         res.status(201).json(recipe); // 201 for created
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -47,6 +56,7 @@ const updateRecipe = async (req, res) => {
 }
 
 module.exports = {
+    getUsersRecipes,
     createRecipe,
     deleteRecipe,
     updateRecipe

@@ -51,9 +51,7 @@ const Home = () => {
             </div>
             <div className="recipes">
                 {recipes && recipes.map((recipe) => (
-                    <p key={recipe._id}>
-                        <RecipeDetails key={recipe._id} recipe={recipe} />
-                    </p>
+                    <RecipeDetails key={recipe._id} recipe={recipe} />
                 ))}
             </div>
         </div>

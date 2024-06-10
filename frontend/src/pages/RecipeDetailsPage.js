@@ -110,7 +110,7 @@ const RecipeDetailsPage = () => {
                                 onChange={(e) => setNewComment(e.target.value)}
                                 required
                             />
-                            <button type="submit"><span class="material-symbols-outlined">send</span></button>
+                            <button type="submit"><span className="material-symbols-outlined">send</span></button>
                         </form>
                     </div>
                 )}

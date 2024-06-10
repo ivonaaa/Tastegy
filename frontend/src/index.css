@@ -232,6 +232,13 @@ form.signup, form.login {
 }
 
 /* Stars */
+.titleAndRating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
 .stars {
   display: flex;
   align-items: center;

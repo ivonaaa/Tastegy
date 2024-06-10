@@ -162,18 +162,19 @@ const RecipeDetailsPage = () => {
         <div className="recipe-details-page">
             {recipe ? (
                 <div>
-                    <h1>{recipe.title}</h1>
-                    <div>
-                        <p>Overall Rating: {overallRating.toFixed(1)}</p>
-                        <div className="stars">
-                            {[...Array(5)].map((_, index) => (
-                                <span
-                                    key={index}
-                                    className={`material-symbols-outlined ${index < overallRating ? 'filled-star' : 'unfilled-star'}`}
-                                >
-                                    star
-                                </span>
-                            ))}
+                    <div className='titleAndRating'>
+                        <h1>{recipe.title}</h1>
+                        <div>
+                            <div className="stars">
+                                {[...Array(5)].map((_, index) => (
+                                    <span
+                                        key={index}
+                                        className={`material-symbols-outlined ${index < overallRating ? 'filled-star' : 'unfilled-star'}`}
+                                    >
+                                        star
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <h2>Ingredients</h2>

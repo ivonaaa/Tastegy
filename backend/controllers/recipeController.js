@@ -1,4 +1,5 @@
 const Recipe = require('../models/recipeModel');
+const Comment = require('../models/commentModel');
 
 // GET all recipes
 const getRecipies = async (req, res) => {
@@ -24,7 +25,18 @@ const getRecipe = async (req, res) => {
     }
 }
 
+const getRecipeComments = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const comments = await Comment.find({ recipe_id: id }).populate('user_id', 'email').sort({ createdAt: 1 });
+        res.status(200).json(comments);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     getRecipies,
-    getRecipe
+    getRecipe,
+    getRecipeComments
 }

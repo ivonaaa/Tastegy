@@ -1,4 +1,5 @@
 const Recipe = require('../models/recipeModel');
+const Comment = require('../models/commentModel');
 
 const getUsersRecipes = async (req, res) => {
     const user_id = req.user._id
@@ -55,9 +56,51 @@ const updateRecipe = async (req, res) => {
     }
 }
 
+const addRatingToRecipe = async (recipeId, userId, rating) => {
+    try {
+        const recipe = await Recipe.findById(recipeId);
+
+        if (!recipe) {
+            throw new Error('Recipe not found');
+        }
+
+        // Check if the user has already rated the recipe
+        const existingRatingIndex = recipe.ratings.findIndex(r => r.user_id.toString() === userId.toString());
+        if (existingRatingIndex !== -1) {
+            // Update existing rating
+            recipe.ratings[existingRatingIndex].rating = rating;
+        } else {
+            // Add new rating
+            recipe.ratings.push({ user_id: userId, rating });
+        }
+
+        await recipe.save();
+
+        return recipe;
+    } catch (error) {
+        throw Error('Could not add/update rating to recipe: ' + error.message);
+    }
+}
+
+const addCommentToRecipe = async (req, res) => {
+    const { id } = req.params;
+    const { comment } = req.body;
+    const user_id = req.user._id; 
+
+    try {
+        const newComment = await Comment.create({ recipe_id: id, user_id, comment });
+        res.status(201).json(newComment);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+
 module.exports = {
     getUsersRecipes,
     createRecipe,
     deleteRecipe,
-    updateRecipe
+    updateRecipe,
+    addRatingToRecipe,
+    addCommentToRecipe
 }

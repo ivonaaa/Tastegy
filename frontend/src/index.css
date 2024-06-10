@@ -76,9 +76,6 @@ header a {
   color: #fff;
   text-decoration: none;
 }
-.home .profile {
-  
-}
 
 label, input, textarea {
   display: block;
@@ -155,6 +152,7 @@ nav button {
 
 /* auth forms */
 form.signup, form.login {
+  color: var(--primary);
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
@@ -199,4 +197,35 @@ form.signup, form.login {
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+.recipe-details-page {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 100px;
+}
+
+.comment-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  background-color: #f0f0f0;
+  color: var(--primary);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.addComment form {
+  display: flex;
+  flex-direction: row;
+}
+
+.addComment form button {
+  background-color: transparent;
 }

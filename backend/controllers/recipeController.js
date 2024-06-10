@@ -1,5 +1,6 @@
 const Recipe = require('../models/recipeModel');
 const Comment = require('../models/commentModel');
+const Rate = require('../models/rateModel');
 
 // GET all recipes
 const getRecipies = async (req, res) => {
@@ -35,8 +36,20 @@ const getRecipeComments = async (req, res) => {
     }
 }
 
+const getAllRatingsForRecipe = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const ratings = await Rate.find({ recipe: id }).populate('user', 'email');
+        res.json(ratings);
+    } catch (error) {
+        console.error('Error fetching ratings:', error);
+        res.status(500).json({ error: 'Failed to fetch ratings' });
+    }
+}
+
 module.exports = {
     getRecipies,
     getRecipe,
-    getRecipeComments
+    getRecipeComments,
+    getAllRatingsForRecipe
 }

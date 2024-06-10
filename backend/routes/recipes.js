@@ -3,7 +3,8 @@ const express = require('express');
 const { 
     getRecipies,
     getRecipe,
-    getRecipeComments
+    getRecipeComments,
+    getAllRatingsForRecipe
 } = require('../controllers/recipeController')
 
 const router = express.Router();
@@ -16,5 +17,7 @@ router.get('/:id', getRecipe);
 
 // GET all comments for a recipe
 router.get('/:id/comments', getRecipeComments);
+
+router.get('/:id/ratings', getAllRatingsForRecipe);
 
 module.exports = router;

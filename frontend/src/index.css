@@ -230,3 +230,20 @@ form.signup, form.login {
 .addComment form button {
   background-color: transparent;
 }
+
+/* Stars */
+.stars {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filled-star {
+  color: gold;
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+}
+
+.unfilled-star {
+  color: lightgray;
+  font-variation-settings: 'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 48;
+}

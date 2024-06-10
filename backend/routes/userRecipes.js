@@ -4,7 +4,8 @@ const {
     createRecipe,
     deleteRecipe,
     updateRecipe,
-    addCommentToRecipe
+    addCommentToRecipe,
+    rateRecipe
 } = require('../controllers/userRecipeController');
 const requireAuth = require('../middleware/requireAuth');
 
@@ -24,5 +25,7 @@ router.delete('/:id', deleteRecipe);
 router.patch('/:id', updateRecipe);
 
 router.post('/:id/comment', addCommentToRecipe);
+
+router.post('/:id/rate', rateRecipe);
 
 module.exports = router;

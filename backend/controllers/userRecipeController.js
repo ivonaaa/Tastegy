@@ -1,5 +1,6 @@
 const Recipe = require('../models/recipeModel');
 const Comment = require('../models/commentModel');
+const Rate = require('../models/rateModel');
 
 const getUsersRecipes = async (req, res) => {
     const user_id = req.user._id
@@ -95,6 +96,32 @@ const addCommentToRecipe = async (req, res) => {
     }
 }
 
+const rateRecipe = async (req, res) => {
+    const { id } = req.params
+    const user_id = req.user._id
+    const { rating } = req.body;
+
+    try {
+        const existingRating = await Rate.findOne({ recipe: id, user: user_id });
+        if (existingRating) {
+            existingRating.rating = rating;
+            await existingRating.save();
+            res.json(existingRating);
+        } else {
+            const newRating = new Rate({
+                recipe: id,
+                user: user_id,
+                rating: rating
+            });
+            await newRating.save();
+            res.json(newRating);
+        }
+    } catch (error) {
+        console.error('Error rating recipe:', error);
+        res.status(500).json({ error: 'Failed to rate recipe' });
+    }
+};
+
 
 module.exports = {
     getUsersRecipes,
@@ -102,5 +129,6 @@ module.exports = {
     deleteRecipe,
     updateRecipe,
     addRatingToRecipe,
-    addCommentToRecipe
+    addCommentToRecipe,
+    rateRecipe
 }

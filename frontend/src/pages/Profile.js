@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import RecipeDetails from '../components/RecipeDetails';
 
 const Profile = () => {
     const { user } = useAuthContext();
     const [recipes, setRecipes] = useState([]);
+    const [ratedRecipes, setRatedRecipes] = useState([]);
 
     useEffect(() => {
         const fetchUserRecipes = async () => {
@@ -21,8 +22,22 @@ const Profile = () => {
             }
         };
 
+        const fetchRatedRecipes = async () => {
+            const response = await fetch('/api/userRecipes/rated', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            const json = await response.json();
+
+            if (response.ok) {
+                setRatedRecipes(json);
+            }
+        };
+
         if (user) {
             fetchUserRecipes();
+            fetchRatedRecipes();
         }
     }, [user]);
 
@@ -36,9 +51,7 @@ const Profile = () => {
                     <div>
                         <div className="recipes-grid">
                             {recipes.map((recipe) => (
-                                <p key={recipe._id}>
-                                    <RecipeDetails key={recipe._id} recipe={recipe} />
-                                </p>
+                                <RecipeDetails key={recipe._id} recipe={recipe} />
                             ))}
                         </div>
                     </div>
@@ -55,6 +68,18 @@ const Profile = () => {
                     </Link>
                     <p>Add new recipe</p>
                 </div>
+                <h3>Rated Recipes: </h3>
+                {ratedRecipes.length > 0 ? (
+                    <div>
+                        <div className="recipes-grid-rated">
+                            {ratedRecipes.map((recipe) => (
+                                <RecipeDetails key={recipe._id} recipe={recipe} />
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <p>Haven't rated any recipes yet.</p>
+                )}
             </div>
         </div>
     );

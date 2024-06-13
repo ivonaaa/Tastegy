@@ -240,6 +240,10 @@ form.signup, form.login {
   align-items: center;
   gap: 10px;
 }
+.stars {
+  display: flex;
+  align-items: center;
+}
 
 .review .stars {
   display: flex;
@@ -505,4 +509,10 @@ nav {
 
 .search input {
   border-radius: 20px;
+}
+
+.recipes-grid-rated {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  gap: 10px;
 }

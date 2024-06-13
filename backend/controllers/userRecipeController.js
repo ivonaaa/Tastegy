@@ -122,6 +122,24 @@ const rateRecipe = async (req, res) => {
     }
 };
 
+const getRatedRecipes = async (req, res) => {
+    const user_id = req.user._id;
+
+    try {
+        // Find all ratings by the user and populate the recipe details
+        const ratedRecipes = await Rate.find({ user: user_id }).populate('recipe');
+
+        // Create a response array that includes the recipe and the user's rating
+        const recipesWithRatings = ratedRecipes.map(rate => ({
+            ...rate.recipe._doc,
+            rating: rate.rating
+        }));
+
+        res.status(200).json(recipesWithRatings);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch rated recipes' });
+    }
+}
 
 module.exports = {
     getUsersRecipes,
@@ -130,5 +148,6 @@ module.exports = {
     updateRecipe,
     addRatingToRecipe,
     addCommentToRecipe,
-    rateRecipe
+    rateRecipe,
+    getRatedRecipes
 }

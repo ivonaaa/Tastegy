@@ -211,7 +211,7 @@ const RecipeDetailsPage = () => {
                         </div>
                        
                         <div className="stars"> 
-                        <p>Leave rating: </p>
+                            <p>Leave rating: </p>
                             {[...Array(5)].map((_, index) => (
                                 <span
                                     key={index}

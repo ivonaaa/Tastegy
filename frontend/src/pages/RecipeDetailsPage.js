@@ -194,7 +194,7 @@ const RecipeDetailsPage = () => {
 
             <div>
                 {user && (
-                    <div>
+                    <div className='review'>
                         <div className="addComment">
                             <p>Add a comment:</p>
                             <form onSubmit={handleSubmitComment}>
@@ -209,7 +209,9 @@ const RecipeDetailsPage = () => {
                                 </button>
                             </form>
                         </div>
-                        <div className="stars">
+                       
+                        <div className="stars"> 
+                        <p>Leave rating: </p>
                             {[...Array(5)].map((_, index) => (
                                 <span
                                     key={index}

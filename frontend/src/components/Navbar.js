@@ -1,13 +1,19 @@
-import { Link } from 'react-router-dom'
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Navbar = () => {
-    const { logout } = useLogout()
-    const { user } = useAuthContext()
+    const { logout } = useLogout();
+    const { user } = useAuthContext();
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleClick = () => {
-        logout()
+        logout();
+    }
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
     }
 
     return (
@@ -19,24 +25,31 @@ const Navbar = () => {
                     </h1>
                 </Link>
                 <nav>
-                    { user && (
-                        <div>
-                            <button onClick={handleClick}>Log out</button>
-                            <Link to="/profile">
-                                <span>{ user.email }</span>
-                            </Link>
-                        </div>
-                    )}
-                    { !user && (
-                        <div>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Signup</Link>
-                        </div>
-                    )}
+                    <div className="hamburger" onClick={toggleMenu}>
+                        <span className="bar"></span>
+                        <span className="bar"></span>
+                        <span className="bar"></span>
+                    </div>
+                    <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+                        { user && (
+                            <div>
+                                <button onClick={handleClick}>Log out</button>
+                                <Link to="/profile">
+                                    <span onClick={toggleMenu}>{ user.email }</span>
+                                </Link>
+                            </div>
+                        )}
+                        { !user && (
+                            <div>
+                                <Link to="/login">Login</Link>
+                                <Link to="/signup">Signup</Link>
+                            </div>
+                        )}
+                    </div>
                 </nav>
             </div>
         </header>
     )
 }
 
-export default Navbar
+export default Navbar;

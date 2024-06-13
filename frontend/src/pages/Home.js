@@ -7,7 +7,8 @@ const Home = () => {
     const [recipes, setRecipes] = useState([]);
     const { user } = useAuthContext();
     const [currentPage, setCurrentPage] = useState(1);
-    const [recipesPerPage] = useState(6); // Set recipes per page
+    const [recipesPerPage] = useState(6); 
+    const [searchQuery, setSearchQuery] = useState(''); 
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -22,15 +23,22 @@ const Home = () => {
         fetchRecipes();
     }, []);
 
-    // Get current recipes
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+        setCurrentPage(1); 
+    };
+
+    const filteredRecipes = recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-    const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+    const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-    // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const totalPages = Math.ceil(recipes.length / recipesPerPage);
+    const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
 
     return (
         <div className="home">
@@ -62,10 +70,22 @@ const Home = () => {
                 )}
             </div>
             <div className='rightBar'>
+                <div className='search'>
+                    <input 
+                        type="text" 
+                        placeholder="Search recipes..." 
+                        value={searchQuery} 
+                        onChange={handleSearchChange} 
+                    />
+                </div>
                 <div className="recipes">
-                    {currentRecipes.map((recipe) => (
-                        <RecipeDetails key={recipe._id} recipe={recipe} />
-                    ))}
+                    {currentRecipes.length > 0 ? (
+                        currentRecipes.map((recipe) => (
+                            <RecipeDetails key={recipe._id} recipe={recipe} />
+                        ))
+                    ) : (
+                        <p>No recipes found</p>
+                    )}
                 </div>
                 <div className="pagination">
                     <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>Previous</button>

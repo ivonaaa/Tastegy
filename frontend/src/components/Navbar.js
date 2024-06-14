@@ -32,7 +32,7 @@ const Navbar = () => {
                     </div>
                     <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
                         { user && (
-                            <div>
+                            <div className='loginAndSignup'>
                                 <button onClick={handleClick}>Log out</button>
                                 <Link to="/profile">
                                     <span onClick={toggleMenu}>{ user.email }</span>
@@ -40,9 +40,9 @@ const Navbar = () => {
                             </div>
                         )}
                         { !user && (
-                            <div>
-                                <Link to="/login">Login</Link>
-                                <Link to="/signup">Signup</Link>
+                            <div className='loginAndSignup'>
+                                <Link to="/login"><span onClick={toggleMenu}>Login</span></Link>
+                                <Link to="/signup"><span onClick={toggleMenu}>Signup</span></Link>
                             </div>
                         )}
                     </div>

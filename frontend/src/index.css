@@ -378,39 +378,52 @@ form.signup, form.login {
   }
 }
 
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Navbar styles for desktop */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Navbar styles for mobile */
 /* Phone */
 @media (max-width: 600px) {
-  body {
-    margin: 0;
-  }
-  .home {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-  }
-
-  .home .recipes {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+  header {
+    position: fixed;
     width: 100%;
+    z-index: 1000; 
+    top: 0; 
+    background-color: var(--primary);
   }
-
-  .recipe-details {
-      width: 100%;
-      margin: 0;
+  body {
+    margin-top: 70px;
   }
-
   .rightBar {
-    background-color: #e7195a;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0;
     width: 100%;
+  }
+
+  .recipe-details {
+    width: 92%;
   }
 
   .recipeForm {
@@ -447,31 +460,7 @@ form.signup, form.login {
   .pagination button {
       margin: 5px 0;
   }
-}
 
-/* Hamburger menu styles */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1001;
-}
-.hamburger .bar {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 4px 0;
-  transition: 0.4s;
-}
-
-/* Navbar styles for desktop */
-nav {
-  display: flex;
-  align-items: center;
-}
-
-/* Navbar styles for mobile */
-@media (max-width: 600px) {
   nav {
       flex-direction: column;
       align-items: flex-start;
@@ -479,27 +468,39 @@ nav {
   }
   .hamburger {
       display: flex;
+      flex-direction: column;
   }
   .nav-links {
       display: none;
       flex-direction: column;
-      width: 100%;
+      width: 90%;
       position: fixed;
-      top: 70px; 
-      left: 0;
-      background-color: var(--primary);
+      top: 90px; 
+      left: 20px;
+      background-color: white;
+      color: var(--primary);
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+      align-items: center;
   }
+
+  .loginAndSignup {
+    display: flex;
+    flex-direction: column;
+  }
+
   .nav-links.open {
       display: flex;
+      flex-direction: column;
   }
   nav a {
       margin: 10px 0;
+      color: var(--primary);
   }
   nav button {
       margin: 10px 0;
+      border-color: white;
   }
   .leftBar {
     display: none;

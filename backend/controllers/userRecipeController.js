@@ -14,7 +14,6 @@ const getUsersRecipes = async (req, res) => {
 const createRecipe = async (req, res) => {
     const { title, description, ingredients } = req.body;
 
-    // Validate input
     if (!title || !description || !Array.isArray(ingredients) || ingredients.length === 0) {
         return res.status(400).json({ error: 'All fields are required and ingredients must be a non-empty array' });
     }
@@ -22,7 +21,7 @@ const createRecipe = async (req, res) => {
     try {
         const user_id = req.user._id
         const recipe = await Recipe.create({ title, description, ingredients, user_id });
-        res.status(201).json(recipe); // 201 for created
+        res.status(201).json(recipe);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -65,13 +64,10 @@ const addRatingToRecipe = async (recipeId, userId, rating) => {
             throw new Error('Recipe not found');
         }
 
-        // Check if the user has already rated the recipe
         const existingRatingIndex = recipe.ratings.findIndex(r => r.user_id.toString() === userId.toString());
         if (existingRatingIndex !== -1) {
-            // Update existing rating
             recipe.ratings[existingRatingIndex].rating = rating;
         } else {
-            // Add new rating
             recipe.ratings.push({ user_id: userId, rating });
         }
 
@@ -126,10 +122,8 @@ const getRatedRecipes = async (req, res) => {
     const user_id = req.user._id;
 
     try {
-        // Find all ratings by the user and populate the recipe details
         const ratedRecipes = await Rate.find({ user: user_id }).populate('recipe');
 
-        // Create a response array that includes the recipe and the user's rating
         const recipesWithRatings = ratedRecipes.map(rate => ({
             ...rate.recipe._doc,
             rating: rate.rating

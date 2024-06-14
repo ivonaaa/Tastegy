@@ -66,7 +66,6 @@ const RecipeDetailsPage = () => {
                         const userRating = ratings.find(rating => rating.user.email === user.email);
                         if (userRating) {
                             setUserRating(userRating.rating);
-                            console.log(userRating)
                         } else {
                             setUserRating(null);
                         }

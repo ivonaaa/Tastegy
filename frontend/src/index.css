@@ -123,6 +123,14 @@ div.error {
   margin: 10px 0px 10px 10px;
   cursor: pointer;
 }
+.addbutton, .removebutton {
+  cursor: pointer;
+}
+
+.removebutton {
+  color: red;
+}
+
 .ingredients {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

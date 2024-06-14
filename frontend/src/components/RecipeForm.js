@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const RecipeForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([{ name: '', quantity: '', unit: '' }]);
     const [error, setError] = useState(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const { user } = useAuthContext()
+    const { user } = useAuthContext();
 
     const handleAddIngredient = () => {
         setIngredients([...ingredients, { name: '', quantity: '', unit: '' }]);
+    };
+
+    const handleRemoveIngredient = (index) => {
+        const newIngredients = ingredients.slice();
+        newIngredients.splice(index, 1);
+        setIngredients(newIngredients);
     };
 
     const handleIngredientChange = (index, event) => {
@@ -25,10 +31,11 @@ const RecipeForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if(!user){
-            setError('You must be logged in')
-            return
+        if (!user) {
+            setError('You must be logged in');
+            return;
         }
+
         const recipe = { title, description, ingredients };
         const response = await fetch('/api/userRecipes', {
             method: 'POST',
@@ -37,14 +44,15 @@ const RecipeForm = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
-        })
-        const json = await response.json
-        if(!response.ok){
-            setError(json.error)
+        });
+
+        const json = await response.json();
+        if (!response.ok) {
+            setError(json.error);
         }
-        if(response.ok){
-            setError(null)
-            console.log('New recipe added!', json)
+        if (response.ok) {
+            setError(null);
+            console.log('New recipe added!', json);
             navigate('/');
         }
     };
@@ -106,6 +114,9 @@ const RecipeForm = () => {
                                     onChange={(e) => handleIngredientChange(index, e)}
                                     required
                                 />
+                                <span onClick={() => handleRemoveIngredient(index)} className='material-symbols-outlined removebutton'>
+                                    remove_circle
+                                </span>
                             </div>
                         ))}
                     </div>

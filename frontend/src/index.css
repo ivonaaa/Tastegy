@@ -326,8 +326,8 @@ form.signup, form.login {
   }
 
   .home .recipes {
-      grid-template-columns: 1fr;
-      gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
   .recipe-details {
@@ -343,14 +343,27 @@ form.signup, form.login {
   }
 
   .rightBar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+  }
+
+  .recipe-details {
+    width: 95%;
   }
 
   .recipeForm {
       grid-template-columns: 1fr;
       gap: 20px;
+  }
+  .ingredients {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
   .recipe-details-page {
@@ -412,6 +425,10 @@ nav {
   body {
     margin-top: 70px;
   }
+  .home .recipes {
+    display: flex;
+    flex-direction: column;
+  }
   .rightBar {
     margin-top: 100px;
     display: flex;
@@ -429,6 +446,13 @@ nav {
   .recipeForm {
       grid-template-columns: 1fr;
       gap: 10px;
+      margin-top: 10px;
+  }
+
+  .ingredients {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
   }
 
   .recipe-details-page {

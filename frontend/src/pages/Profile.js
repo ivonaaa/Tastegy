@@ -10,7 +10,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchUserRecipes = async () => {
-            const response = await fetch('/api/userRecipes/', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/userRecipes/`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -23,7 +23,7 @@ const Profile = () => {
         };
 
         const fetchRatedRecipes = async () => {
-            const response = await fetch('/api/userRecipes/rated', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/userRecipes/rated`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

@@ -16,7 +16,7 @@ const RecipeDetailsPage = () => {
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
-                const response = await fetch(`/api/recipes/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/recipes/${id}`);
                 const json = await response.json();
 
                 if (response.ok) {
@@ -35,7 +35,7 @@ const RecipeDetailsPage = () => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch(`/api/recipes/${id}/comments`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/recipes/${id}/comments`);
                 const json = await response.json();
 
                 if (response.ok) {
@@ -54,7 +54,7 @@ const RecipeDetailsPage = () => {
     useEffect(() => {
         const fetchRatings = async () => {
             try {
-                const response = await fetch(`/api/recipes/${id}/ratings`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/recipes/${id}/ratings`);
                 const ratings = await response.json();
                 if (response.ok) {
                     const totalRatings = ratings.length;
@@ -90,7 +90,7 @@ const RecipeDetailsPage = () => {
         }
 
         try {
-            const response = await fetch(`/api/userRecipes/${id}/comment`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/userRecipes/${id}/comment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const RecipeDetailsPage = () => {
         }
 
         try {
-            const response = await fetch(`/api/UserRecipes/${id}/rate`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/UserRecipes/${id}/rate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ const RecipeDetailsPage = () => {
                 
                 const fetchRatings = async () => {
                     try {
-                        const response = await fetch(`/api/recipes/${id}/ratings`);
+                        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/recipes/${id}/ratings`);
                         const ratings = await response.json();
                         if (response.ok) {
                             const totalRatings = ratings.length;

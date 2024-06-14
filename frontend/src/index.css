@@ -549,3 +549,24 @@ nav {
   grid-template-columns: repeat(1fr);
   gap: 10px;
 }
+
+.simbolAndP {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.addRecipe a {
+  text-decoration: none;
+  color: white; 
+}
+
+.simbolAndP .material-symbols-outlined {
+  color: white; 
+  margin-right: 8px; 
+}
+
+.simbolAndP p {
+  color: white; 
+  margin: 0; 
+}

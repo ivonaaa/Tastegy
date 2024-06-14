@@ -62,11 +62,14 @@ const Profile = () => {
             <div className='userRecipeInfo'>
                 <div className='addRecipe'>
                     <Link to="/addRecipe">
-                        <span className='material-symbols-outlined addbutton'>
-                            add_circle
-                        </span>
+                        <div className='simbolAndP'>
+                            <span className='material-symbols-outlined addbutton'>
+                                add_circle 
+                            </span>
+                            <p>Add new recipe</p>
+                        </div>
                     </Link>
-                    <p>Add new recipe</p>
+                    
                 </div>
                 <h3>Rated Recipes: </h3>
                 {ratedRecipes.length > 0 ? (

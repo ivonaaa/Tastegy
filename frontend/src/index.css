@@ -6,6 +6,7 @@
   --primary: #5B79A2;
   --error: #e7195a;
 }
+
 body {
   background: url('../public/images/background.jpg') no-repeat center center fixed;
   color: #fff;
@@ -13,6 +14,7 @@ body {
   margin: 0;
   font-family: "Poppins";
 }
+
 header {
   color: #fff;
 }
@@ -569,4 +571,22 @@ nav {
 .simbolAndP p {
   color: white; 
   margin: 0; 
+}
+
+.password-checker {
+  margin-top: 10px;
+}
+
+.password-checker ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.password-checker li {
+  color: rgb(244, 123, 123);
+}
+
+.password-checker .valid {
+  color: rgb(134, 243, 134);
 }

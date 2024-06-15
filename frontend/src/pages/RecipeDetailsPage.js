@@ -101,7 +101,7 @@ const RecipeDetailsPage = () => {
             const json = await response.json();
 
             if (response.ok) {
-                setComments([...comments, json]);
+                setComments([json, ...comments]);
                 setNewComment('');
             } else {
                 throw new Error(json.error || 'Failed to add comment');

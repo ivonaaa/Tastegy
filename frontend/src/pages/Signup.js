@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { useSignup } from '../hooks/useSignup'
+import { useSignup } from '../hooks/useSignup';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const [hasUppercase, setHasUppercase] = useState(false);
     const [hasNumber, setHasNumber] = useState(false);
     const [hasSymbol, setHasSymbol] = useState(false);
-    const { signup, error, isLoading } = useSignup()
+    const { signup, error, isLoading } = useSignup();
 
     const validatePassword = (password) => {
         const uppercaseRegex = /[A-Z]/;
@@ -30,6 +31,10 @@ const Signup = () => {
         await signup(email, password);
     };
 
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
+
     return (
         <form className="signup" onSubmit={handleSubmit}>
             <h3>Sign up</h3>
@@ -41,11 +46,18 @@ const Signup = () => {
                 value={email}
             />
             <label>Password: </label>
-            <input
-                type="password"
-                onChange={handlePasswordChange}
-                value={password}
-            />
+            <div className="password-input-container">
+                <input
+                    type={passwordVisible ? "text" : "password"}
+                    onChange={handlePasswordChange}
+                    value={password}
+                />
+                <button type="button" onClick={togglePasswordVisibility} className="toggle-password-visibility">
+                    <span className="material-symbols-outlined">
+                        {passwordVisible ? 'visibility_off' : 'visibility'}
+                    </span>
+                </button>
+            </div>
             <div className="password-checker">
                 <small>Password must contain:</small>
                 <ul>

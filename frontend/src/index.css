@@ -590,3 +590,23 @@ nav {
 .password-checker .valid {
   color: rgb(134, 243, 134);
 }
+
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container input {
+  width: 100%; 
+  justify-content: center;
+}
+
+.toggle-password-visibility {
+  position: absolute;
+  right: 0px;
+  top: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+}

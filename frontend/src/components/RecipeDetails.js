@@ -10,7 +10,6 @@ const RecipeDetails = ({ recipe }) => {
             {recipe.rating ? <p>Your rating: {recipe.rating}</p> : null}
             <p><strong>Details: </strong>{recipe.description}</p>
             <p>{ formatDistanceToNow(new Date(recipe.createdAt), { addSuffix: true }) }</p>
-            <Link to={`/recipe/${recipe._id}`}>View Details</Link>
         </div>
     )
 }

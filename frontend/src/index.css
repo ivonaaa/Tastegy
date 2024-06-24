@@ -50,22 +50,31 @@ header a {
 }
 .recipe-details {
   width: 95%;
+  height: 85%;
   background: #fff;
   border-radius: 4px;
   margin: 0px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  text-decoration: none;
+
 }
 .recipe-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
+  text-decoration: none;
 }
 .recipe-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
+  text-decoration: none;
+}
+.home .recipes a{
+  text-decoration: none;
+  color: inherit;
 }
 .recipe-details span {
   position: absolute;

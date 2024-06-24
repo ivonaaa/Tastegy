@@ -81,7 +81,9 @@ const Home = () => {
                 <div className="recipes">
                     {currentRecipes.length > 0 ? (
                         currentRecipes.map((recipe) => (
-                            <RecipeDetails key={recipe._id} recipe={recipe} />
+                            <Link to={`/recipe/${recipe._id}`}>
+                                <RecipeDetails key={recipe._id} recipe={recipe} />
+                            </Link>
                         ))
                     ) : (
                         <p>No recipes found</p>

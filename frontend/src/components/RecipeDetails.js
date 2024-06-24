@@ -1,5 +1,4 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { Link } from 'react-router-dom'
 
 const RecipeDetails = ({ recipe }) => {
     return (

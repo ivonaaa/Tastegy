@@ -11,7 +11,7 @@ Tastegy is a web application designed for sharing and discovering recipes.
    - Users can register and log in securely.
 
 2. **Recipe Management**
-   - Registered users can create, edit, and delete recipes to tailor them to their preferences.
+   - Registered users can create, rate, and comment recipes.
    
 3. **Recipe Display and Search**
    - Browse through a comprehensive list of recipes.
@@ -32,5 +32,9 @@ Tastegy is a web application designed for sharing and discovering recipes.
 ## Getting Started
 1. Clone this repository.
 2. Navigate to the project directory.
-3. Install dependencies using `npm install`.
-4. Start the development server with `npm start`.
+3. Navigate to backend folder.
+4. Install dependencies using `npm install`.
+5. Start the development server with `npm start`.
+6. Navigate to frontend folder.
+7. Install dependencies using `npm install`.
+8. Start the react app with `npm start`.

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
@@ -80,6 +80,14 @@ const RecipeDetailsPage = () => {
 
         fetchRatings();
     }, [id, user]);
+
+    const handleEmailClick = (email) => {
+        if (user && email === user.email) {
+            return '/profile';
+        } else {
+            return `/userProfile?email=${email}`;
+        }
+    };
 
     const handleSubmitComment = async (e) => {
         e.preventDefault();
@@ -176,6 +184,11 @@ const RecipeDetailsPage = () => {
                             </div>
                         </div>
                     </div>
+                    <small>
+                        <Link to={handleEmailClick(recipe.user_id.email)} className="email-link" style={{cursor: 'pointer', textDecoration: 'underline'}}>
+                            {recipe.user_id.email}
+                        </Link>
+                    </small>
                     <h2>Ingredients</h2>
                     <ul>
                         {recipe.ingredients.map((ingredient, index) => (
@@ -208,7 +221,7 @@ const RecipeDetailsPage = () => {
                                 </button>
                             </form>
                         </div>
-                       
+                    
                         <div className="stars"> 
                             <p>Leave rating: </p>
                             {[...Array(5)].map((_, index) => (
@@ -227,7 +240,13 @@ const RecipeDetailsPage = () => {
                 <div className="comment-view">
                     {comments.map((comment) => (
                         <div key={comment._id} className="comment">
-                            <p><small>{comment.user_id.email || userEmail}</small></p>
+                            <p>
+                                <small>
+                                    <Link to={handleEmailClick(comment.user_id.email)} style={{cursor: 'pointer', color: 'blue', textDecoration: 'underline'}}>
+                                        {comment.user_id.email || userEmail}
+                                    </Link>
+                                </small>
+                            </p>
                             <p>{comment.comment}</p>
                             <p><small>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</small></p>
                         </div>

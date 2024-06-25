@@ -28,7 +28,8 @@ const recipeSchema = new Schema({
     },
     ingredients: [ingredientSchema],
     user_id: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 }, { timestamps: true });

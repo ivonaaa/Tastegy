@@ -4,11 +4,13 @@ const {
     getRecipies,
     getRecipe,
     getRecipeComments,
-    getAllRatingsForRecipe
+    getAllRatingsForRecipe,
+    getRecipiesFromUser
 } = require('../controllers/recipeController')
 
 const router = express.Router();
 
+router.get('/user', getRecipiesFromUser);
 // GET all recipes
 router.get('/', getRecipies);
 

@@ -228,6 +228,16 @@ form.signup, form.login {
   gap: 100px;
 }
 
+a.email-link {
+  color: white;
+  text-decoration: none; 
+}
+
+a.email-link:hover {
+  text-decoration: underline; 
+}
+
+
 .comment-view {
   display: flex;
   flex-direction: column;

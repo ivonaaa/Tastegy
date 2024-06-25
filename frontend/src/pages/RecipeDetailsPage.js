@@ -237,6 +237,7 @@ const RecipeDetailsPage = () => {
                     </div>
                 )}
                 <h2>Comments:</h2>
+                
                 <div className="comment-view">
                     {comments.map((comment) => (
                         <div key={comment._id} className="comment">

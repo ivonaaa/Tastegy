@@ -210,7 +210,12 @@ form.signup, form.login {
   color: #fff;
 }
 
-
+.recipeForm .addRecipe {
+  justify-content: flex-start;
+}
+.home .addRecipe {
+  justify-content: flex-start;
+}
 .recipe-details {
   border: 1px solid #ccc;
   padding: 10px;

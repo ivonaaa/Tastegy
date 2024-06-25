@@ -69,7 +69,6 @@ const Profile = () => {
                             <p>Add new recipe</p>
                         </div>
                     </Link>
-                    
                 </div>
                 <h3>Rated Recipes: </h3>
                 {ratedRecipes.length > 0 ? (

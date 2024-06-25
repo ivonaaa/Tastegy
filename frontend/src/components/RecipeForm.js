@@ -82,10 +82,12 @@ const RecipeForm = () => {
                 </div>
                 <div>
                     <label>
-                        Ingredients: 
-                        <span onClick={handleAddIngredient} className='material-symbols-outlined addbutton'>
-                            add_circle
-                        </span>
+                        <div className='addRecipe'>
+                            Ingredients: 
+                            <span onClick={handleAddIngredient} className='material-symbols-outlined addbutton'>
+                                add_circle
+                            </span>
+                        </div>
                     </label>
                     <div className='ingredients'>
                         {ingredients.map((ingredient, index) => (

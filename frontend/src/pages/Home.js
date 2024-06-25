@@ -45,12 +45,26 @@ const Home = () => {
             <div className='leftBar'>
                 { user && (
                     <div>
-                        <Link to="/addRecipe">
-                            <p>Add Recipe</p>
-                        </Link>
-                        <Link to="/profile">
-                            <p>My profile</p>
-                        </Link>
+                        <div className='addRecipe'>
+                            <Link to="/addRecipe">
+                                <div className='simbolAndP'>
+                                    <span className='material-symbols-outlined addbutton'>
+                                        add_circle 
+                                    </span>
+                                    <p>Add new recipe</p>
+                                </div>
+                            </Link>
+                        </div>
+                        <div className='addRecipe'>
+                            <Link to="/profile">
+                                <div className='simbolAndP'>
+                                    <span className='material-symbols-outlined addbutton'>
+                                        person
+                                    </span>
+                                    <p>My profile</p>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
                 )}
                 { !user && (
